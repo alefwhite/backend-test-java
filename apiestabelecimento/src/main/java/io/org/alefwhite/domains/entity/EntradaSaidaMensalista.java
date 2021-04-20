@@ -26,4 +26,35 @@ public class EntradaSaidaMensalista {
     @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
 
+    public Vaga getVaga() {
+        return vaga;
+    }
+
+    public void setVaga(Vaga vaga) {
+        this.vaga = vaga;
+    }
+
+    public LocalDateTime getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(LocalDateTime dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public LocalDateTime getDataSaida() {
+        return dataSaida;
+    }
+
+    public void setDataSaida(LocalDateTime dataSaida) {
+        this.dataSaida = dataSaida;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
 }

@@ -7,11 +7,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClienteRespository extends JpaRepository<Cliente, Integer> {
 
     @Query(value = " select * from clientes c where c.nome like '%:nome%' ", nativeQuery = true)
-    List<Cliente> encontrarPorNome(@Param("nome") String nome );
+    List<Cliente> findByNome(@Param("nome") String nome );
+
+    @Query(value = " select * from clientes c where c.cpf = ':cpf' ", nativeQuery = true)
+    Optional<Cliente> findCpf(@Param("cpf") String cpf );
+
+//    Optional<Cliente> findByCpf(@Param("cpf") String cpf );
 
     @Query(" delete from Cliente c where c.nome =:nome ")
     @Modifying

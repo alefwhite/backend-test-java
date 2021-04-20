@@ -36,4 +36,67 @@ public class Empresa {
     @OneToMany( mappedBy = "empresa" , fetch = FetchType.LAZY )
     private Set<Vaga> vagas;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getTelfone() {
+        return telfone;
+    }
+
+    public void setTelfone(String telfone) {
+        this.telfone = telfone;
+    }
+
+    public Integer getQtdagasMotos() {
+        return QtdagasMotos;
+    }
+
+    public void setQtdagasMotos(Integer qtdagasMotos) {
+        QtdagasMotos = qtdagasMotos;
+    }
+
+    public Integer getQtdVagasCarros() {
+        return QtdVagasCarros;
+    }
+
+    public void setQtdVagasCarros(Integer qtdVagasCarros) {
+        QtdVagasCarros = qtdVagasCarros;
+    }
+
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Set<Vaga> getVagas() {
+        return vagas;
+    }
+
+    public void setVagas(Set<Vaga> vagas) {
+        this.vagas = vagas;
+    }
 }

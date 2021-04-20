@@ -24,4 +24,35 @@ public class Vaga {
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
 
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public char getSetor() {
+        return setor;
+    }
+
+    public void setSetor(char setor) {
+        this.setor = setor;
+    }
+
+    public char getTipoVeiculo() {
+        return tipoVeiculo;
+    }
+
+    public void setTipoVeiculo(char tipoVeiculo) {
+        this.tipoVeiculo = tipoVeiculo;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
 }

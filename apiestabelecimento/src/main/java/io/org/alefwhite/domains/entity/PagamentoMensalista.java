@@ -20,4 +20,28 @@ public class PagamentoMensalista {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    public LocalDate getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(LocalDate dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public Boolean getPago() {
+        return pago;
+    }
+
+    public void setPago(Boolean pago) {
+        this.pago = pago;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

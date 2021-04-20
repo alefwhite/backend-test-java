@@ -27,4 +27,43 @@ public class Usuario {
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
 }
