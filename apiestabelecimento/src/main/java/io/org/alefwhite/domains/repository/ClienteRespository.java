@@ -1,6 +1,6 @@
-package io.org.alefwhite.domain.repository;
+package io.org.alefwhite.domains.repository;
 
-import io.org.alefwhite.domain.entity.Cliente;
+import io.org.alefwhite.domains.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

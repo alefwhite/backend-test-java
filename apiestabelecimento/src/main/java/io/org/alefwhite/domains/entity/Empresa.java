@@ -1,4 +1,4 @@
-package io.org.alefwhite.domain.entity;
+package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
 import java.util.Set;

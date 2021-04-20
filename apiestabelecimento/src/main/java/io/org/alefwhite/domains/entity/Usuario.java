@@ -1,4 +1,4 @@
-package io.org.alefwhite.domain.entity;
+package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
 
@@ -20,7 +20,7 @@ public class Usuario {
     @Column(name = "senha", length = 100)
     private String senha;
 
-    @Column(name = "admin", columnDefinition = "false")
+    @Column(name = "admin", columnDefinition = "boolean default false")
     private Boolean admin;
 
     @ManyToOne

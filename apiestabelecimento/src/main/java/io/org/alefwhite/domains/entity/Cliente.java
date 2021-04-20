@@ -1,6 +1,4 @@
-package io.org.alefwhite.domain.entity;
-
-import io.org.alefwhite.domain.enums.DiaVencimentoMensalista;
+package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -23,10 +21,10 @@ public class Cliente {
     @Column(name = "telefone", length = 15)
     private String telefone;
 
-    @Column(name = "mensalista", columnDefinition = "false")
+    @Column(name = "mensalista", columnDefinition = "boolean default false")
     private Boolean mensalista;
 
-    @Column(name = "dia_vencimento_mensalista", length = 2)
+    @Column(name = "dia_vencimento_mensalista")
     private Integer diaVencimentoMensalista;
 
     @OneToMany( mappedBy = "cliente" , fetch = FetchType.LAZY )

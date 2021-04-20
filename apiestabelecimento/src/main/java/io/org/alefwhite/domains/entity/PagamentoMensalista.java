@@ -1,4 +1,4 @@
-package io.org.alefwhite.domain.entity;
+package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,7 +14,7 @@ public class PagamentoMensalista {
     @Column(name = "data_vencimento")
     private LocalDate dataVencimento;
 
-    @Column(name = "admin", columnDefinition = "false")
+    @Column(name = "admin", columnDefinition = "boolean default false")
     private Boolean pago;
 
     @ManyToOne
