@@ -3,8 +3,12 @@ package io.org.alefwhite.rest.controllers;
 import io.org.alefwhite.domains.entity.Cliente;
 import io.org.alefwhite.domains.repository.ClienteRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +26,15 @@ public class ClienteController {
     private ClienteRespository clienteRespository;
 
     @GetMapping
-    public ResponseEntity getClientes () {
-        List<Cliente> clientes = clienteRespository.findAll();
+    public List<Cliente> getClientes (Cliente filtro) {
+        ExampleMatcher matcher = ExampleMatcher
+                                    .matching()
+                                    .withIgnoreCase()
+                                    .withStringMatcher( ExampleMatcher.StringMatcher.CONTAINING );
 
-        return ResponseEntity.ok(clientes);
+        Example example = Example.of(filtro, matcher);
+
+        return clienteRespository.findAll(example);
     }
 
     @GetMapping("/cpf")
@@ -40,46 +49,44 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getClienteById ( @PathVariable Integer id ) {
-        Optional<Cliente> cliente = clienteRespository.findById(id);
-
-        if(cliente.isPresent()) {
-            return ResponseEntity.ok(cliente.get());
-        }
-
-        return ResponseEntity.notFound().build();
-
+    public Cliente getClienteById ( @PathVariable Integer id ) {
+        return clienteRespository
+                .findById(id)
+                .orElseThrow(() ->
+                      new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado")
+                );
     }
 
     @DeleteMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity delete ( @PathVariable Integer id ) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete ( @PathVariable Integer id ) {
         Optional<Cliente> cliente = clienteRespository.findById(id);
 
-        if(cliente.isPresent()) {
-            clienteRespository.delete( cliente.get() );
-            return ResponseEntity.noContent().build();
+        if(!cliente.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado");
         }
 
-        return ResponseEntity.notFound().build();
+        clienteRespository.delete(cliente.get());
     }
 
     @PutMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity update ( @PathVariable Integer id, @RequestBody Cliente cliente ) {
-        return clienteRespository.findById(id)
-                .map(existsCliente -> {
-                    cliente.setId(existsCliente.getId());
-                    clienteRespository.save(cliente);
-                    return ResponseEntity.noContent().build();
-                })
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update ( @PathVariable Integer id, @RequestBody Cliente cliente ) {
+         clienteRespository.findById(id)
+            .map(existsCliente -> {
+                cliente.setId(existsCliente.getId());
+                clienteRespository.save(cliente);
+                return existsCliente;
+            })
+             .orElseThrow(() ->
+                     new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado")
+             );
     }
 
     @PostMapping
-    @ResponseBody
-    public ResponseEntity save (@RequestBody Cliente cliente) {
-        Cliente clienteSave = clienteRespository.save(cliente);
-        return ResponseEntity.ok(clienteSave);
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente save (@RequestBody Cliente cliente) {
+        return clienteRespository.save(cliente);
     }
+
 }
