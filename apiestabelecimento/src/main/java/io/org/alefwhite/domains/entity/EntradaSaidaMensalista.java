@@ -1,15 +1,18 @@
 package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "entrada_saida_mensalistas")
-public class EntradaSaidaMensalista {
+public class EntradaSaidaMensalista implements Serializable {
+    private static final Integer serialVersionUID = 1;
 
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
+    @Column
     private Integer id;
 
     @ManyToOne
@@ -56,5 +59,13 @@ public class EntradaSaidaMensalista {
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

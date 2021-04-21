@@ -1,14 +1,17 @@
 package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table( name = "pagamentos_mensalistas")
-public class PagamentoMensalista {
+public class PagamentoMensalista implements Serializable {
+    private static final Integer serialVersionUID = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column
     private Integer id;
 
     @Column(name = "data_vencimento")
@@ -43,5 +46,13 @@ public class PagamentoMensalista {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

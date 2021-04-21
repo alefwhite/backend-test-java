@@ -1,21 +1,25 @@
 package io.org.alefwhite.domains.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table( name = "clientes" )
-public class Cliente {
+public class Cliente implements Serializable {
+    private static final Integer serialVersionUID = 1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column
     private Integer id;
 
     @Column(name = "nome", length = 100)
     private String nome;
 
-    @Column(name = "cpf", length = 11)
+    @Column(name = "cpf", length = 11, unique = true)
     private String cpf;
 
     @Column(name = "telefone", length = 15)
@@ -27,6 +31,7 @@ public class Cliente {
     @Column(name = "dia_vencimento_mensalista")
     private Integer diaVencimentoMensalista;
 
+    @JsonIgnore
     @OneToMany( mappedBy = "cliente" , fetch = FetchType.LAZY )
     private Set<Veiculo> veiculos;
 
@@ -78,5 +83,11 @@ public class Cliente {
         this.veiculos = veiculos;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

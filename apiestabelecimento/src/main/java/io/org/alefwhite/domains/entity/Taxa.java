@@ -1,14 +1,17 @@
 package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table( name = "taxas")
-public class Taxa {
+public class Taxa implements Serializable {
+    private static final Integer serialVersionUID = 1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Integer id;
 
     @Column( name = "descricao")
@@ -42,5 +45,13 @@ public class Taxa {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

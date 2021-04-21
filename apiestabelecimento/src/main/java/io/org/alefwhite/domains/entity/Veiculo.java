@@ -1,14 +1,16 @@
 package io.org.alefwhite.domains.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table( name = "veiculos" )
-public class Veiculo {
+public class Veiculo implements Serializable {
+    private static final Integer serialVersionUID = 1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column
     private Integer id;
 
     @Column(name = "marca", length = 100)
@@ -65,5 +67,13 @@ public class Veiculo {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
