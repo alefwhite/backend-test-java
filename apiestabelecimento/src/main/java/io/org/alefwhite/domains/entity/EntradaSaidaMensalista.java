@@ -1,12 +1,16 @@
 package io.org.alefwhite.domains.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "entrada_saida_mensalistas")
+@Getter
+@Setter
 public class EntradaSaidaMensalista implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -20,7 +24,7 @@ public class EntradaSaidaMensalista implements Serializable {
     private Vaga vaga;
 
     @Column(name = "data_entrada", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime dataEntrada;
+    private LocalDateTime dataEntrada = LocalDateTime.now();
 
     @Column(name = "data_saida")
     private LocalDateTime dataSaida;
@@ -28,44 +32,4 @@ public class EntradaSaidaMensalista implements Serializable {
     @ManyToOne
     @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
-
-    public Vaga getVaga() {
-        return vaga;
-    }
-
-    public void setVaga(Vaga vaga) {
-        this.vaga = vaga;
-    }
-
-    public LocalDateTime getDataEntrada() {
-        return dataEntrada;
-    }
-
-    public void setDataEntrada(LocalDateTime dataEntrada) {
-        this.dataEntrada = dataEntrada;
-    }
-
-    public LocalDateTime getDataSaida() {
-        return dataSaida;
-    }
-
-    public void setDataSaida(LocalDateTime dataSaida) {
-        this.dataSaida = dataSaida;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

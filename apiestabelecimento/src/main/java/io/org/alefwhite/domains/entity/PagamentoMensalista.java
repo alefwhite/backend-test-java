@@ -1,11 +1,16 @@
 package io.org.alefwhite.domains.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table( name = "pagamentos_mensalistas")
+@Getter
+@Setter
 public class PagamentoMensalista implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -24,35 +29,4 @@ public class PagamentoMensalista implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    public LocalDate getDataVencimento() {
-        return dataVencimento;
-    }
-
-    public void setDataVencimento(LocalDate dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
-
-    public Boolean getPago() {
-        return pago;
-    }
-
-    public void setPago(Boolean pago) {
-        this.pago = pago;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

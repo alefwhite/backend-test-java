@@ -1,10 +1,15 @@
 package io.org.alefwhite.domains.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table( name = "vagas" )
+@Getter
+@Setter
 public class Vaga implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -25,44 +30,4 @@ public class Vaga implements Serializable {
     @ManyToOne
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
-
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public char getSetor() {
-        return setor;
-    }
-
-    public void setSetor(char setor) {
-        this.setor = setor;
-    }
-
-    public char getTipoVeiculo() {
-        return tipoVeiculo;
-    }
-
-    public void setTipoVeiculo(char tipoVeiculo) {
-        this.tipoVeiculo = tipoVeiculo;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

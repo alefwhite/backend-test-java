@@ -25,17 +25,34 @@ public class ClienteController {
     @Autowired
     private ClienteRespository clienteRespository;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente save (@RequestBody Cliente cliente) {
+        return clienteRespository.save(cliente);
+    }
+
     @GetMapping
     public List<Cliente> getClientes (Cliente filtro) {
         ExampleMatcher matcher = ExampleMatcher
-                                    .matching()
-                                    .withIgnoreCase()
-                                    .withStringMatcher( ExampleMatcher.StringMatcher.CONTAINING );
+                .matching()
+                .withIgnoreCase()
+                .withStringMatcher( ExampleMatcher.StringMatcher.CONTAINING );
 
         Example example = Example.of(filtro, matcher);
 
         return clienteRespository.findAll(example);
     }
+
+    @GetMapping("/{id}")
+    public Cliente getClienteById ( @PathVariable Integer id ) {
+        return clienteRespository
+                .findById(id)
+                .orElseThrow(() ->
+                    new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Cliente não encontrado")
+                );
+    }
+
 
     @GetMapping("/cpf")
     public ResponseEntity getClienteByCpf ( @RequestParam(required = false) String cpf ) {
@@ -48,14 +65,6 @@ public class ClienteController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/{id}")
-    public Cliente getClienteById ( @PathVariable Integer id ) {
-        return clienteRespository
-                .findById(id)
-                .orElseThrow(() ->
-                      new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado")
-                );
-    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -83,10 +92,6 @@ public class ClienteController {
              );
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Cliente save (@RequestBody Cliente cliente) {
-        return clienteRespository.save(cliente);
-    }
+
 
 }

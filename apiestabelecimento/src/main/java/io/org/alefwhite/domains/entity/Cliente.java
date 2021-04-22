@@ -1,6 +1,8 @@
 package io.org.alefwhite.domains.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,6 +10,8 @@ import java.util.Set;
 
 @Entity
 @Table( name = "clientes" )
+@Getter
+@Setter
 public class Cliente implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -35,59 +39,5 @@ public class Cliente implements Serializable {
     @OneToMany( mappedBy = "cliente" , fetch = FetchType.LAZY )
     private Set<Veiculo> veiculos;
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public Boolean getMensalista() {
-        return mensalista;
-    }
-
-    public void setMensalista(Boolean mensalista) {
-        this.mensalista = mensalista;
-    }
-
-    public Integer getDiaVencimentoMensalista() {
-        return diaVencimentoMensalista;
-    }
-
-    public void setDiaVencimentoMensalista(Integer diaVencimentoMensalista) {
-        this.diaVencimentoMensalista = diaVencimentoMensalista;
-    }
-
-    public Set<Veiculo> getVeiculos() {
-        return veiculos;
-    }
-
-    public void setVeiculos(Set<Veiculo> veiculos) {
-        this.veiculos = veiculos;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

@@ -1,11 +1,16 @@
 package io.org.alefwhite.domains.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table( name = "taxas")
+@Getter
+@Setter
 public class Taxa implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -23,35 +28,4 @@ public class Taxa implements Serializable {
     @Column( name = "valor", precision = 20, scale = 2)
     private BigDecimal valor;
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Integer getTempo() {
-        return tempo;
-    }
-
-    public void setTempo(Integer tempo) {
-        this.tempo = tempo;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

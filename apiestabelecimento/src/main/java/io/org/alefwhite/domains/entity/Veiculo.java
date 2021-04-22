@@ -1,10 +1,16 @@
 package io.org.alefwhite.domains.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table( name = "veiculos" )
+@Getter
+@Setter
 public class Veiculo implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -25,55 +31,8 @@ public class Veiculo implements Serializable {
     @Column(name = "tipo_veiculo", length = 1)
     private char tipoVeiculo;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public char getTipoVeiculo() {
-        return tipoVeiculo;
-    }
-
-    public void setTipoVeiculo(char tipoVeiculo) {
-        this.tipoVeiculo = tipoVeiculo;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }
