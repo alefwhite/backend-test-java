@@ -4,7 +4,7 @@ import io.org.alefwhite.domains.entity.Cliente;
 import io.org.alefwhite.domains.entity.Veiculo;
 import io.org.alefwhite.domains.repository.ClienteRespository;
 import io.org.alefwhite.domains.repository.VeiculoRepository;
-import io.org.alefwhite.exceptions.CadastrarVeiculoException;
+import io.org.alefwhite.exceptions.VeiculoException;
 import io.org.alefwhite.rest.dto.VeiculoDto;
 import io.org.alefwhite.services.VeiculoService;
 import org.modelmapper.ModelMapper;
@@ -32,7 +32,7 @@ public class VeiculoServiceImpl implements VeiculoService {
         Optional<Cliente> cliente = clienteRespository.findById(dto.getIdCliente());
 
         if(!cliente.isPresent()) {
-            throw new CadastrarVeiculoException("Não possível cadastar veículo");
+            throw new VeiculoException("Não possível cadastar veículo");
         }
 
         v.setCliente(cliente.get());

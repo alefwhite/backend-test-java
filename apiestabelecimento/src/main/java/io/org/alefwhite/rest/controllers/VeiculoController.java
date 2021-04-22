@@ -3,6 +3,7 @@ package io.org.alefwhite.rest.controllers;
 import io.org.alefwhite.domains.entity.Cliente;
 import io.org.alefwhite.domains.entity.Veiculo;
 import io.org.alefwhite.domains.repository.VeiculoRepository;
+import io.org.alefwhite.exceptions.VeiculoException;
 import io.org.alefwhite.rest.dto.VeiculoDto;
 import io.org.alefwhite.services.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,7 @@ public class VeiculoController {
         return veiculoRepository
                 .findById(id)
                 .orElseThrow(() ->
-                    new ResponseStatusException(HttpStatus.NOT_FOUND, "Veiculo não encontrado")
+                    new VeiculoException("Veiculo não encontrado")
                 );
     }
 
