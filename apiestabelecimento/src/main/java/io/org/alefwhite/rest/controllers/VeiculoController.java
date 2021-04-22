@@ -3,6 +3,8 @@ package io.org.alefwhite.rest.controllers;
 import io.org.alefwhite.domains.entity.Cliente;
 import io.org.alefwhite.domains.entity.Veiculo;
 import io.org.alefwhite.domains.repository.VeiculoRepository;
+import io.org.alefwhite.rest.dto.VeiculoDto;
+import io.org.alefwhite.services.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -19,10 +21,13 @@ public class VeiculoController {
     @Autowired
     private VeiculoRepository veiculoRepository;
 
+    @Autowired
+    private VeiculoService veiculoService;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Veiculo save (@RequestBody Veiculo veiculo) {
-        return veiculoRepository.save(veiculo);
+    public Veiculo save (@RequestBody VeiculoDto dto) {
+        return veiculoService.salvar(dto);
     }
 
     @GetMapping

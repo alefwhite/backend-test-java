@@ -49,7 +49,7 @@ public class ClienteController {
                 .findById(id)
                 .orElseThrow(() ->
                     new ResponseStatusException(HttpStatus.NOT_FOUND,
-                    "Cliente não encontrado")
+                        "Cliente não encontrado")
                 );
     }
 

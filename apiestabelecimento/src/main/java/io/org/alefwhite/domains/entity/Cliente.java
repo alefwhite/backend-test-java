@@ -1,17 +1,17 @@
 package io.org.alefwhite.domains.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
-@Entity
-@Table( name = "clientes" )
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table( name = "clientes" )
 public class Cliente implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -35,9 +35,7 @@ public class Cliente implements Serializable {
     @Column(name = "dia_vencimento_mensalista")
     private Integer diaVencimentoMensalista;
 
-    @JsonIgnore
-    @OneToMany( mappedBy = "cliente" , fetch = FetchType.LAZY )
-    private Set<Veiculo> veiculos;
-
+    @OneToMany( mappedBy = "cliente" , fetch = FetchType.EAGER )
+    private List<Veiculo> veiculos;
 
 }

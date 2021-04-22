@@ -1,16 +1,16 @@
 package io.org.alefwhite.domains.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table( name = "veiculos" )
-@Getter
-@Setter
 public class Veiculo implements Serializable {
     private static final Integer serialVersionUID = 1;
 
@@ -18,6 +18,9 @@ public class Veiculo implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Integer id;
+
+    @Column(name = "modelo", length = 100)
+    private String modelo;
 
     @Column(name = "marca", length = 100)
     private String marca;

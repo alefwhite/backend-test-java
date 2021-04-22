@@ -1,16 +1,16 @@
 package io.org.alefwhite.domains.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table( name = "pagamentos_mensalistas")
-@Getter
-@Setter
 public class PagamentoMensalista implements Serializable {
     private static final Integer serialVersionUID = 1;
 

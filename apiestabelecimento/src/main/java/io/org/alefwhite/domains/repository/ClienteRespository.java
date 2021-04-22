@@ -14,7 +14,11 @@ public interface ClienteRespository extends JpaRepository<Cliente, Integer> {
     @Query(value = " select * from clientes c where c.nome like '%:nome%' ", nativeQuery = true)
     List<Cliente> findByNome(@Param("nome") String nome );
 
-    @Query(" select c from Cliente c left join fetch c.veiculos where c.id = :id  ")
+    @Query(value = "select * from clientes c inner join veiculos v on v.cliente_id = c.id where c.id = :id",
+            nativeQuery = true)
+    Cliente findClienteVeiculos( @Param("id") Integer id);
+
+    @Query(" select c from Cliente c inner join fetch c.veiculos where c.id = :id  ")
     Cliente findClienteFetchVeiculos( @Param("id") Integer id );
 
     @Query(value = " select * from clientes c where c.cpf = :cpf ", nativeQuery = true)
