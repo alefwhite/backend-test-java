@@ -33,14 +33,14 @@ public class Empresa implements Serializable {
     @CNPJ( message = "Informe um CPNJ válido!")
     private String cnpj;
 
-    @Column(name = "telfone", length = 15)
-    private String telfone;
+    @Column(name = "telefone", length = 15)
+    private String telefone;
 
     @Column(name = "qtd_vagas_motos")
-    private Integer QtdagasMotos;
+    private Integer qtd_vagasMoto;
 
     @Column(name = "qtd_vagas_carros")
-    private Integer QtdVagasCarros;
+    private Integer qtd_vagasCarro;
 
     @OneToMany( mappedBy = "empresa" , fetch = FetchType.LAZY )
     private Set<Usuario> usuarios;
