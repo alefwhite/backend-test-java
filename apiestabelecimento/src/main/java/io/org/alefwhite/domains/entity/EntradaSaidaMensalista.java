@@ -16,7 +16,7 @@ public class EntradaSaidaMensalista implements Serializable {
     private static final Integer serialVersionUID = 1;
 
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO )
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column
     private Integer id;
 

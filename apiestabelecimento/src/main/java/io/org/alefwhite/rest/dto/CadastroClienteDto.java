@@ -8,27 +8,25 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CadastroClienteDto {
-    @NotEmpty(message = "Campo CPF é obrigatório!")
-    @CPF
+    @NotEmpty(message = "{campo.cpf.obrigatorio}")
+    @CPF(message = "{campo.cpf.invalido}")
     private String cpf;
 
-    @NotEmpty(message = "Campo nome é obrigatório!")
+    @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
-    @NotEmpty(message = "Campo nome é obrigatório!")
+    @NotEmpty(message = "{campo.telefone.obrigatorio}")
     private String telefone;
 
-    @NotNull(message = "Campo nome é obrigatório!")
+    @NotNull(message = "{campo.mensalista.mensalista}")
     private Boolean mensalista;
 
-    @NotNull(message = "Campo nome é obrigatório!")
     private Integer diaVencimentoMensalista;
 
-    @NotEmptyList( message = "Veiculo é obrigatório!")
+    @NotEmptyList( message = "{campo.veiculo.obrigatorio}")
     private List<VeiculoDto> veiculos;
 }

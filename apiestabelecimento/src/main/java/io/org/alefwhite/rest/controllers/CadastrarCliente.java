@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/clientes/cadastrar")
 public class CadastrarCliente {
@@ -16,7 +18,7 @@ public class CadastrarCliente {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente save(@RequestBody CadastroClienteDto dto) {
+    public Cliente save(@RequestBody @Valid CadastroClienteDto dto) {
         return cadastroClienteService.salvar(dto);
     }
 }
