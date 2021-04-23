@@ -1,12 +1,15 @@
 package io.org.alefwhite.domains.entity;
 
 import lombok.*;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -26,6 +29,8 @@ public class Empresa implements Serializable {
     private String endereco;
 
     @Column(name = "cnpj", length = 14, unique = true)
+    @NotEmpty(message = "Campo CPNJ é obrigatório")
+    @CNPJ( message = "Informe um CPNJ válido!")
     private String cnpj;
 
     @Column(name = "telfone", length = 15)

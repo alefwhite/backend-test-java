@@ -1,12 +1,15 @@
 package io.org.alefwhite.domains.entity;
 
+import io.org.alefwhite.domains.enums.StausPagamento;
+import io.org.alefwhite.domains.enums.TipoVeiculo;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,8 +25,12 @@ public class PagamentoMensalista implements Serializable {
     @Column(name = "data_vencimento")
     private LocalDate dataVencimento;
 
-    @Column(name = "admin", columnDefinition = "boolean default false")
-    private Boolean pago;
+//    @Column(name = "pagamento", columnDefinition = "boolean default false")
+//    private Boolean pagamento;
+
+    @Column(name = "status_pagamento")
+    @Enumerated(EnumType.STRING)
+    private StausPagamento stausPagamento;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

@@ -1,8 +1,10 @@
 package io.org.alefwhite.domains.entity;
 
 import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,9 +23,12 @@ public class Cliente implements Serializable {
     private Integer id;
 
     @Column(name = "nome", length = 100)
+    @NotEmpty( message = "Campo nome é obrigatório")
     private String nome;
 
     @Column(name = "cpf", length = 11, unique = true)
+    @NotEmpty( message = "Campo cpf é obrigatório")
+    @CPF(message = "Informe um CPF válido")
     private String cpf;
 
     @Column(name = "telefone", length = 15)
