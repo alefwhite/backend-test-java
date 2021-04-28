@@ -1,5 +1,6 @@
 package io.org.alefwhite.domains.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,5 +34,6 @@ public class Usuario implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "empresa_id")
+    @JsonIgnore
     private Empresa empresa;
 }
