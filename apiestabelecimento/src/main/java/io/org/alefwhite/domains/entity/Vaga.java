@@ -28,7 +28,7 @@ public class Vaga implements Serializable {
     @Column(name = "tipo_veiculo", length = 1)
     private char tipoVeiculo;
 
-//    @ManyToOne
-//    @JoinColumn(name = "empresa_id")
-//    private Empresa empresa;
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
 }

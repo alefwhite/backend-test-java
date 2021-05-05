@@ -1,5 +1,6 @@
 package io.org.alefwhite.domains.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -43,6 +44,7 @@ public class Empresa implements Serializable {
     private Integer qtd_vagasCarro;
 
     @OneToMany( mappedBy = "empresa" , fetch = FetchType.LAZY )
+    @JsonIgnore
     private Set<Usuario> usuarios;
 
     @OneToMany( mappedBy = "empresa" , fetch = FetchType.LAZY )

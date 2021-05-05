@@ -32,8 +32,7 @@ public class Usuario implements Serializable {
     @Column(name = "admin", columnDefinition = "boolean default false")
     private Boolean admin;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "empresa_id")
-    @JsonIgnore
     private Empresa empresa;
 }

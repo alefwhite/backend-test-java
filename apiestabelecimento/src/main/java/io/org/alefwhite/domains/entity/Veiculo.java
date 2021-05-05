@@ -45,4 +45,8 @@ public class Veiculo implements Serializable {
     @Column(name = "tipo_veiculo")
     private TipoVeiculo tipoVeiculo;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
 }

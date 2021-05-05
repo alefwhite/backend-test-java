@@ -25,8 +25,8 @@ public class PagamentoMensalista implements Serializable {
     @Column(name = "data_vencimento")
     private LocalDate dataVencimento;
 
-//    @Column(name = "pagamento", columnDefinition = "boolean default false")
-//    private Boolean pagamento;
+    @Column(name = "pagamento", columnDefinition = "boolean default false")
+    private Boolean pagamento;
 
     @Column(name = "status_pagamento")
     @Enumerated(EnumType.STRING)

@@ -3,6 +3,7 @@ package io.org.alefwhite.config;
 import io.org.alefwhite.services.impl.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -33,7 +34,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .disable()
             .authorizeRequests()
             .antMatchers("/api/clientes/**")
-            .hasRole("USER")//.permitAll() // .authenticate()
+                    .hasAnyRole("USER", "ADMIN")
+            .antMatchers("/api/empresas/**")
+                    .hasAnyRole("USER", "ADMIN")
+            .antMatchers("/api/pagamentos/**")
+                    .hasRole("ADMIN")//.permitAll() // .authenticate()
+            .antMatchers(HttpMethod.POST, "/api/usuarios/**")
+                    .permitAll()
+            .anyRequest()
+                    .authenticated()
             .and()
             .formLogin();
     }
