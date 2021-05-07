@@ -2,6 +2,7 @@ package io.org.alefwhite.rest.controllers;
 
 import io.org.alefwhite.domains.entity.Cliente;
 import io.org.alefwhite.domains.repository.ClienteRespository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping
 (
     value = "/api/clientes",
@@ -23,7 +25,6 @@ import java.util.Optional;
 
 public class ClienteController {
 
-    @Autowired
     private ClienteRespository clienteRespository;
 
     @PostMapping

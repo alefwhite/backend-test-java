@@ -1,4 +1,4 @@
-package io.org.alefwhite.rest.dto;
+package io.org.alefwhite.rest.dto.request;
 
 import lombok.*;
 import org.hibernate.validator.constraints.br.CNPJ;

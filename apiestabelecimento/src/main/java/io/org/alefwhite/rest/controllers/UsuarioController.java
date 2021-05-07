@@ -1,7 +1,7 @@
 package io.org.alefwhite.rest.controllers;
 
 import io.org.alefwhite.domains.entity.Usuario;
-import io.org.alefwhite.rest.dto.UsuarioDTO;
+import io.org.alefwhite.rest.dto.request.UsuarioDTO;
 import io.org.alefwhite.services.impl.UsuarioServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -6,7 +6,7 @@ import io.org.alefwhite.domains.enums.TipoVeiculo;
 import io.org.alefwhite.domains.repository.ClienteRespository;
 import io.org.alefwhite.domains.repository.VeiculoRepository;
 import io.org.alefwhite.exceptions.VeiculoException;
-import io.org.alefwhite.rest.dto.VeiculoDto;
+import io.org.alefwhite.rest.dto.request.VeiculoDto;
 import io.org.alefwhite.services.VeiculoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

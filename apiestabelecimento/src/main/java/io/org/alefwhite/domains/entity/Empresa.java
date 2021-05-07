@@ -30,8 +30,6 @@ public class Empresa implements Serializable {
     private String endereco;
 
     @Column(name = "cnpj", length = 14, unique = true)
-    @NotEmpty(message = "Campo CPNJ é obrigatório")
-    @CNPJ( message = "Informe um CPNJ válido!")
     private String cnpj;
 
     @Column(name = "telefone", length = 15)

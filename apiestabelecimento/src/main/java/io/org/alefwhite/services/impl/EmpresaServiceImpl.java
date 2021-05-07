@@ -1,9 +1,8 @@
 package io.org.alefwhite.services.impl;
 
-import io.org.alefwhite.domains.entity.Cliente;
 import io.org.alefwhite.domains.entity.Empresa;
 import io.org.alefwhite.domains.repository.EmpresaRepository;
-import io.org.alefwhite.rest.dto.EmpresaDTO;
+import io.org.alefwhite.rest.dto.request.EmpresaDTO;
 import io.org.alefwhite.services.EmpresaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

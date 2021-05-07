@@ -4,7 +4,7 @@ import io.org.alefwhite.domains.entity.Empresa;
 import io.org.alefwhite.domains.entity.Usuario;
 import io.org.alefwhite.domains.repository.EmpresaRepository;
 import io.org.alefwhite.domains.repository.UsuarioRepository;
-import io.org.alefwhite.rest.dto.UsuarioDTO;
+import io.org.alefwhite.rest.dto.request.UsuarioDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;

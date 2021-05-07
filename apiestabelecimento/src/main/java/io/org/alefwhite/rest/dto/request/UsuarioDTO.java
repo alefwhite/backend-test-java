@@ -1,4 +1,4 @@
-package io.org.alefwhite.rest.dto;
+package io.org.alefwhite.rest.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

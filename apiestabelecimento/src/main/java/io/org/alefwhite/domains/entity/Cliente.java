@@ -23,27 +23,24 @@ public class Cliente implements Serializable {
     @Column
     private Integer id;
 
-    @Column(name = "nome", length = 100)
-    @NotEmpty(message = "{campo.nome.obrigatorio}")
+    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
 
-    @Column(name = "cpf", length = 11, unique = true)
-    @NotEmpty(message = "{campo.cpf.obrigatorio}")
-    @CPF(message = "{campo.cpf.invalido}")
+    @Column(name = "cpf", length = 11, unique = true, nullable = false)
     private String cpf;
 
-    @Column(name = "telefone", length = 15)
-    @NotEmpty(message = "{campo.telefone.obrigatorio}")
+    @Column(name = "telefone", length = 15, nullable = false)
     private String telefone;
 
     @Column(name = "mensalista", columnDefinition = "boolean default false")
-    @NotNull(message = "{campo.mensalista.mensalista}")
     private Boolean mensalista;
 
     @Column(name = "dia_vencimento_mensalista")
     private Integer diaVencimentoMensalista;
 
-    @OneToMany( mappedBy = "cliente" , fetch = FetchType.LAZY )
+    @OneToMany( mappedBy = "cliente" , fetch = FetchType.LAZY,
+        cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE }
+    )
     private List<Veiculo> veiculos;
 
 }
